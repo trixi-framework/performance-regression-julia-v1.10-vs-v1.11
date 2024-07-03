@@ -140,3 +140,33 @@ BenchmarkTools.Trial: 697 samples with 1 evaluation.
 
  Memory estimate: 0 bytes, allocs estimate: 0.
 ```
+
+#### Versioninfo
+##### v1.10.4
+```
+Julia Version 1.10.4
+Commit 48d4fd48430 (2024-06-04 10:41 UTC)
+Build Info:
+  Official https://julialang.org/ release
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: 128 × AMD Ryzen Threadripper 3990X 64-Core Processor
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-15.0.7 (ORCJIT, znver2)
+Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
+```
+
+##### v1.11.0-rc1
+```
+Julia Version 1.11.0-rc1
+Commit 3a35aec36d1 (2024-06-25 10:23 UTC)
+Build Info:
+  Official https://julialang.org/ release
+Platform Info:
+  OS: Linux (x86_64-linux-gnu)
+  CPU: 128 × AMD Ryzen Threadripper 3990X 64-Core Processor
+  WORD_SIZE: 64
+  LLVM: libLLVM-16.0.6 (ORCJIT, znver2)
+Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
+```
