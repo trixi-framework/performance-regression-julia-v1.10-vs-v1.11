@@ -79,7 +79,7 @@
 
 ## Results
 
-### Rocinante
+### Rocinante (AMD Ryzen Threadripper 3990X)
 
 #### v1.10.4, benchmark #1
 ```julia
@@ -169,4 +169,99 @@ Platform Info:
   WORD_SIZE: 64
   LLVM: libLLVM-16.0.6 (ORCJIT, znver2)
 Threads: 1 default, 0 interactive, 1 GC (on 128 virtual cores)
+```
+
+
+### Macbook Pro (Apple M3 Pro)
+
+#### v1.10.4, benchmark #1
+```julia
+julia> @benchmark Trixi.rhs!($du_ode, $u_ode, $semi, 0.0)
+BenchmarkTools.Trial: 2932 samples with 1 evaluation.
+ Range (min … max):  1.635 ms … 1.788 ms  ┊ GC (min … max): 0.00% … 0.00%
+ Time  (median):     1.703 ms             ┊ GC (median):    0.00%
+ Time  (mean ± σ):   1.704 ms ± 5.435 μs  ┊ GC (mean ± σ):  0.00% ± 0.00%
+
+                                             ▃█▇▄▁
+  ▂▁▁▁▁▁▁▁▁▁▁▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▂▃▆█████▆▅▅▄▄▃▃▂▂ ▃
+  1.63 ms        Histogram: frequency by time       1.72 ms <
+
+ Memory estimate: 0 bytes, allocs estimate: 0.
+
+julia>
+```
+
+#### v1.11.0-rc1, benchmark #1
+```julia
+julia> @benchmark Trixi.rhs!($du_ode, $u_ode, $semi, 0.0)
+BenchmarkTools.Trial: 2510 samples with 1 evaluation.
+ Range (min … max):  1.953 ms … 2.076 ms  ┊ GC (min … max): 0.00% … 0.00%
+ Time  (median):     1.990 ms             ┊ GC (median):    0.00%
+ Time  (mean ± σ):   1.992 ms ± 6.347 μs  ┊ GC (mean ± σ):  0.00% ± 0.00%
+
+                                   ▅▅▆▆█▅▂
+  ▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▂▃▅▇██████████▇▇▆▅▆▅▄▅▃▃▃▃▂▃▂ ▃
+  1.95 ms        Histogram: frequency by time       2.01 ms <
+
+ Memory estimate: 0 bytes, allocs estimate: 0.
+```
+
+#### v1.10.4, benchmark #2
+```julia
+julia> @benchmark Trixi.rhs!($du_ode, $u_ode, $semi, 0.0)
+BenchmarkTools.Trial: 1621 samples with 1 evaluation.
+ Range (min … max):  2.855 ms …   5.195 ms  ┊ GC (min … max): 0.00% … 0.00%
+ Time  (median):     3.008 ms               ┊ GC (median):    0.00%
+ Time  (mean ± σ):   3.084 ms ± 205.531 μs  ┊ GC (mean ± σ):  0.00% ± 0.00%
+
+  ▁ ▁▃▆▅█▆▅▃▄▃▆▅▄▃▂▂▂▁▁▁▁▁                                    ▁
+  █████████████████████████▇▇▇▇▇██▇▅█▅█▅▆█▆▇▇▇▆▇▅▅▅▆▁▆▅▆▄▄▄▄▄ █
+  2.86 ms      Histogram: log(frequency) by time      3.89 ms <
+
+ Memory estimate: 0 bytes, allocs estimate: 0.
+```
+
+#### v1.11.0-rc1, benchmark #2
+```julia
+julia> @benchmark Trixi.rhs!($du_ode, $u_ode, $semi, 0.0)
+BenchmarkTools.Trial: 1409 samples with 1 evaluation.
+ Range (min … max):  3.483 ms …  4.041 ms  ┊ GC (min … max): 0.00% … 0.00%
+ Time  (median):     3.544 ms              ┊ GC (median):    0.00%
+ Time  (mean ± σ):   3.549 ms ± 33.919 μs  ┊ GC (mean ± σ):  0.00% ± 0.00%
+
+                 ▃▃▃▃ ▂▁▂      ▅█▅▁
+  ▂▁▂▂▂▂▂▃▄▃▃▅▅▆█████████▄▆▅▃▅██████▆▇▆▄▂▂▂▂▂▂▂▁▂▂▂▂▁▁▁▁▁▁▁▂ ▄
+  3.48 ms        Histogram: frequency by time        3.64 ms <
+
+ Memory estimate: 0 bytes, allocs estimate: 0.
+```
+
+#### Versioninfo
+##### v1.10.4
+```
+Julia Version 1.10.4
+Commit 48d4fd48430 (2024-06-04 10:41 UTC)
+Build Info:
+  Official https://julialang.org/ release
+Platform Info:
+  OS: macOS (arm64-apple-darwin22.4.0)
+  CPU: 11 × Apple M3 Pro
+  WORD_SIZE: 64
+  LIBM: libopenlibm
+  LLVM: libLLVM-15.0.7 (ORCJIT, apple-m1)
+Threads: 1 default, 0 interactive, 1 GC (on 5 virtual cores)
+```
+
+##### v1.11.0-rc1
+```
+Julia Version 1.11.0-rc1
+Commit 3a35aec36d1 (2024-06-25 10:23 UTC)
+Build Info:
+  Official https://julialang.org/ release
+Platform Info:
+  OS: macOS (arm64-apple-darwin22.4.0)
+  CPU: 11 × Apple M3 Pro
+  WORD_SIZE: 64
+  LLVM: libLLVM-16.0.6 (ORCJIT, apple-m3)
+Threads: 1 default, 0 interactive, 1 GC (on 5 virtual cores)
 ```
